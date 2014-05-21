@@ -5,8 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'gstream.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', 'gstream.apps.home.views.homepage', name='home'),
     url(r'^admin/', include(admin.site.urls)),
 )

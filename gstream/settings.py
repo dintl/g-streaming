@@ -12,12 +12,14 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# template dirs
+TEMPLATE_DIRS = (os.path.join(BASE_DIR,"gstream","templates"),)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h!_bn87xuk$fi!n_d7gehi*22qyz%7ew#b0!fr7*%7xz6al00n'
+SECRET_KEY = 'secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gstream.apps.home',
 )
 
 MIDDLEWARE_CLASSES = (
