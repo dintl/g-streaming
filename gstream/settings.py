@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-PROJECT_PATH = os.path.split(os.path.abspath(os.path.dirname(__file__)))[0]
 
 gettext = lambda s: s
 
@@ -39,7 +38,6 @@ INSTALLED_APPS = (
     'djangocms_link',
     'djangocms_style',
     'djangocms_column',
-    'djangocms_grid',
     'djangocms_oembed',
     'djangocms_table',
     'djangocms_text_ckeditor',  # note this needs to be above the 'cms' entry
@@ -89,7 +87,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'cms.context_processors.cms_settings',
     'sekizai.context_processors.sekizai',
 )
-
 
 
 ROOT_URLCONF = 'gstream.urls'
@@ -144,7 +141,7 @@ MEDIA_URL = "/media/"
 SITE_ID = 1
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, "templates"),
+    os.path.join(BASE_DIR, "templates"),
 )
 
 CMS_TEMPLATES = (
