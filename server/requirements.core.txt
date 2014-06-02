@@ -1,0 +1,5 @@
+######################## Core requirements ############################ 
+django==1.6.5
+psycopg2==2.5.2 #Requires the ubuntu package libpq-dev to be installed
+south==0.8.4
+gunicorn==18.0
