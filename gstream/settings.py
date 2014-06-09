@@ -37,7 +37,6 @@ INSTALLED_APPS = (
 
     ################################ CMS ###########################
     'djangocms_link',
-    'djangocms_style',
     'djangocms_column',
     'djangocms_oembed',
     'djangocms_table',
@@ -58,9 +57,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    ################################ OTHER HELPERS ###################
+    'crispy_forms',
   
     ################################ GSTREAM #########################
-    'gstream.apps.home',
+    'gstream.apps.accounts',
+    'gstream.apps.locations',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -134,6 +137,15 @@ USE_TZ = True
 STATIC_ROOT = '/opt/data/web/static'
 STATIC_URL = '/static/'
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+    )
+
+STATICFILES_DIRS = (
+     os.path.join(PROJECT_DIR, "static_source/"),
+    )
+
 # Media 
 MEDIA_ROOT = '/opt/data/web/web'
 MEDIA_URL = "/media/"
@@ -148,6 +160,9 @@ TEMPLATE_DIRS = (
 CMS_TEMPLATES = (
     ('cms/template_basic.html', 'Basic Template'),
 )
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 if not os.path.isfile(os.path.join(BASE_DIR, 'settings_local.py')):
     print "settings_local.py not present - skipping"

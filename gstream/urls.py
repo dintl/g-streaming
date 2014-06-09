@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'gstream.apps.home.views.homepage', name='home'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('gstream.apps.accounts.urls')),
+
     url(r'^', include('cms.urls')),
 )
 

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block meta_title%}
+	Register
+{% endblock%}
+
+
+{% block script %}
+<script>
+    $(function() {
+       $( ".btn" ).button();
+     });
+
+</script>
+{% endblock %}
+
+{%block content %}
+
+<div class="row">
+	<div class="col-lg-8">
+
+
+		<h2>Sign Up!</h2>
+		{% if form.has_errors %}
+		    form.non_field_errors
+		{% endif %}
+
+	    <p>Registration and use of the G-Streaming platform is free. Please fill out the form below. We will review your application and notify you when it is accepted.</p>
+	    
+	    </p>
+		<form method="post" style="padding:0px 15px 0px 0px;">
+			{% for error in form.non_field_errors  %} 
+			   <span class="error"> {{ error|escape }} </span> <br>
+			{% endfor %}
+
+			{% csrf_token %}
+	        
+			<fieldset>
+				<legend>Account Details</legend>
+				{{ form.username|as_crispy_field }}
+				{{ form.password1|as_crispy_field }}
+				{{ form.password2|as_crispy_field }}
+			</fieldset>
+
+			<fieldset>
+				<legend>About You</legend>
+				{{ form.first_name|as_crispy_field }}
+				{{ form.last_name|as_crispy_field }}
+				{{ form.email|as_crispy_field }}
+				{{ form.country|as_crispy_field }}
+			</fieldset>
+			<br>
+
+			<fieldset>
+				<legend>G-Streaming Website Terms &amp; Conditions</legend>
+				<div id="toc">
+					{% include 'accounts/terms_and_conditions_website.html' %}
+				</div>
+				{% with form.accept_terms_website as field %}
+				 <label  class="required" for="id_{{ field.html_name }}">
+	                  
+
+		              {% if field.errors %} 
+			             	<span class="error"> {{ field.errors|first|striptags }}</span> <br>
+			          {% endif %}
+
+			          {{ field|safe }}
+
+		                 <span class="required">*</span> 
+		              {{ field.label }}
+		          </label>
+			          
+
+
+				{% endwith %}
+			</fieldset>
+
+
+
+		<div class="submit_block">
+			<input type="submit" value="Register" class="btn btn-success"/>
+		</div>
+		
+		</form>
+	</div>
+	{% include "accounts/_inc.register_options.html" %}
+</div>
+	
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block meta_title %}
+	Login
+{% endblock %}
+
+
+
+{% block content %}
+	<div class="row">
+		<div class="col-lg-8">
+			<h2>Login</h2>
+			{% if form.has_errors %}
+				<p>Your username and password didn't match. Please try again.</p>
+			{% else %}
+				<p>Please log in to access the G-Streaming site</p>
+			{% endif %}	
+
+			<form method="post" role="form">
+				
+				{% include "accounts/_inc.form_basic.html" %}
+				
+				<div class="submit_block">
+					<input type="submit" value="Login" />
+				</div>
+				
+				<input type="hidden" name="next" value="/" />
+			</form>
+			
+			<p><a href="/accounts/password-reset/">Lost your password?</a></p>
+		</div>	
+		{% include "accounts/_inc.login_options.html" %}
+	</div>
+{% endblock %}
