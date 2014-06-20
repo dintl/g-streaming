@@ -1,0 +1,36 @@
+{% load thumbnail %}
+
+<!-- Carousel
+================================================== -->
+<div id="carousel-{{carousel.id}}" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+  	{% for cimage in carousel.images.all %}
+    <li data-target="#myCarousel" data-slide-to="{{forloop.counter0}}"
+    {% if forloop.counter0 == 0 %} class="active" {% endif %}
+    ></li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+  	{% for cimage in carousel.images.all %}
+	    <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
+	       {% thumbnail cimage.image 1200x500 crop as thumb %}
+	       {% if cimage.link %}
+	       		<a href="{{cimage.link}}" target="{{cimage.target}}">
+	       {% endif %}
+	       	<img src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}">
+	       {% if cimage.link %}
+	       </a>
+	       {% endif %}
+	      <div class="container">
+	        <div class="carousel-caption">
+	          <h3>{{cimage.title}}</h3>
+	          <p>{{cimage.description}}</p>
+	        </div>
+	      </div>
+	    </div>
+	{% endfor %}
+  </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div><!-- /.carousel -->

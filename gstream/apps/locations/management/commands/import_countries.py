@@ -44,3 +44,24 @@ class Command(BaseCommand):
                 centroid_latitude = cd_row['latitude'],
                 centroid_longitude = cd_row['longitude'] 
             )
+
+
+    def load_countries_csv(self):
+        #csv file with country lats/lons
+        csv_file_path = os.path.join(settings.BASE_DIR, 'gstream', 'apps', 'locations', 'resources', 'cow.txt')
+        headers = []
+        countries = []
+
+        def clean(row):
+            fields = row.replace('\r', '').replace('\n', '').replace(u'\ufeff','').split(';')
+            fields = [v.strip() for v in fields]
+            return fields
+
+        with codecs.open(csv_file_path, 'r', encoding='utf-8') as csv_file:
+            for row in csv_file:
+                if not len(headers):
+                    headers = clean(row)
+                    continue
+                countries.append(dict(zip(headers, clean(row))))
+
+        return countries

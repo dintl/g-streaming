@@ -60,10 +60,12 @@ INSTALLED_APPS = (
 
     ################################ OTHER HELPERS ###################
     'crispy_forms',
+    'easy_thumbnails',
   
     ################################ GSTREAM #########################
     'gstream.apps.accounts',
     'gstream.apps.locations',
+    'gstream.apps.carousels',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -147,7 +149,7 @@ STATICFILES_DIRS = (
     )
 
 # Media 
-MEDIA_ROOT = '/opt/data/web/web'
+MEDIA_ROOT = '/opt/data/web/media'
 MEDIA_URL = "/media/"
 
 #django sites (required by django cms)
@@ -163,6 +165,11 @@ CMS_TEMPLATES = (
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+THUMBNAIL_BASEDIR = 'thumbs'
+SOUTH_MIGRATION_MODULES = {
+        'easy_thumbnails': 'easy_thumbnails.south_migrations',
+    }
 
 if not os.path.isfile(os.path.join(BASE_DIR, 'settings_local.py')):
     print "settings_local.py not present - skipping"
