@@ -38,7 +38,7 @@
 			{% csrf_token %}
 	        
 			<fieldset>
-				<legend>Account Details</legend>
+				<legend>Username and Password</legend>
 				{{ form.username|as_crispy_field }}
 				{{ form.password1|as_crispy_field }}
 				{{ form.password2|as_crispy_field }}
@@ -48,8 +48,8 @@
 				<legend>About You</legend>
 				{{ form.first_name|as_crispy_field }}
 				{{ form.last_name|as_crispy_field }}
-				{{ form.email|as_crispy_field }}
 				{{ form.country|as_crispy_field }}
+				{{ form.email|as_crispy_field }}
 			</fieldset>
 			<br>
 

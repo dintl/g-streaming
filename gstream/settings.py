@@ -63,9 +63,16 @@ INSTALLED_APPS = (
     'easy_thumbnails',
   
     ################################ GSTREAM #########################
+    
     'gstream.apps.accounts',
-    'gstream.apps.locations',
+    
+    #Admin content apps
     'gstream.apps.carousels',
+
+    #User content apps
+    'gstream.apps.content',
+    'gstream.apps.blogs',
+    'gstream.apps.locations',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -93,6 +100,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'cms.context_processors.cms_settings',
     'sekizai.context_processors.sekizai',
 )
+
+CMS_TOOLBARS = [
+    # CMS Toolbars
+    'cms.cms_toolbar.PlaceholderToolbar',
+    'cms.cms_toolbar.BasicToolbar',
+    'cms.cms_toolbar.PageToolbar',
+]
 
 
 ROOT_URLCONF = 'gstream.urls'

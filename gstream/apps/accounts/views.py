@@ -32,10 +32,10 @@ def register(request):
             user.is_active = False
             user.save()
             
-            user_profile = models.UserProfile(user=user,
+            profile = models.Profile(user=user,
                                               country=form.cleaned_data['country'],
                                               )
-            user_profile.save()
+            profile.save()
              
             mail_managers('G-Streaming New User "%s" requires approval' % user.username,
                       """
@@ -52,10 +52,10 @@ To allow the user to log in you can follow these steps:
 
 
 You may also view the new user's profile at:
-http://www.g-streaming.net/admin/accounts/userprofile/%s/
+http://www.g-streaming.net/admin/accounts/profile/%s/
                                               
 
-""" % (user.id, user.get_profile().id), 
+""" % (user.id, profile.id), 
                      fail_silently=False)
             
             return HttpResponseRedirect('/accounts/approval-pending/')

@@ -1,29 +1,26 @@
 
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import Profile
+from gstream.apps.locations.models import Country
 
 class RegistrationForm(forms.ModelForm):
     """
     A form that creates a user, with no privileges, from the given username and password.
     """
     
-    title = forms.CharField(label='Title', max_length=10)
     first_name = forms.CharField(label='First name', max_length=30)
     last_name  = forms.CharField(label='Last name', max_length=30)
-    
     
     username  = forms.RegexField(label="Username", max_length=30, regex=r'^[\w.@+-]+$',
     error_messages = {'invalid': "This value may contain only letters, numbers and the characters @.+-_ "})
     
-  
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput,
     help_text = "Enter the same password as above, for verification.")
-    
-    country     = forms.CharField(label='Country', max_length=80)
-   
-    email       = forms.EmailField(label="Email")
+       
+    email  = forms.EmailField(label="Email")
+    country = forms.ModelChoiceField(queryset=Country.objects.all())
 
     accept_terms_website   = forms.BooleanField(label='I accept the G-Streaming Website Terms and Conditions.')
    
@@ -64,3 +61,10 @@ class RegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class ProfileForm(forms.ModelForm):
+    country = forms.ModelChoiceField(queryset=Country.objects.all())
+
+    class Meta:
+        model = Profile

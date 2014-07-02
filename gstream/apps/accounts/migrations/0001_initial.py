@@ -8,8 +8,8 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'UserProfile'
-        db.create_table('accounts_userprofile', (
+        # Adding model 'Profile'
+        db.create_table('accounts_profile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('address', self.gf('django.db.models.fields.CharField')(max_length=200)),
@@ -24,17 +24,17 @@ class Migration(SchemaMigration):
             ('field_subject', self.gf('django.db.models.fields.CharField')(max_length=60)),
             ('data_may_provide', self.gf('django.db.models.fields.CharField')(max_length=40)),
         ))
-        db.send_create_signal('accounts', ['UserProfile'])
+        db.send_create_signal('accounts', ['Profile'])
 
 
     def backwards(self, orm):
-        # Deleting model 'UserProfile'
-        db.delete_table('accounts_userprofile')
+        # Deleting model 'Profile'
+        db.delete_table('accounts_profile')
 
 
     models = {
-        'accounts.userprofile': {
-            'Meta': {'object_name': 'UserProfile'},
+        'accounts.profile': {
+            'Meta': {'object_name': 'Profile'},
             'address': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'country': ('django.db.models.fields.CharField', [], {'max_length': '80'}),
             'data_may_provide': ('django.db.models.fields.CharField', [], {'max_length': '40'}),

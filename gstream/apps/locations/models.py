@@ -28,3 +28,4 @@ class Country(models.Model):
         verbose_name ='Country'
         verbose_name_plural = 'Countries'
         ordering = ('common_name',)
+

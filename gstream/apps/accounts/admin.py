@@ -4,11 +4,11 @@ from django.core import urlresolvers
 
 from . import models
 
-class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'location_country')
-    search_fields  = ['user__username', 'location_country__common_name']
-    list_filter = ['location_country__common_name',]
-    readonly_fields = ['user','user_link']
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'country')
+    search_fields  = ('user__username', 'country__common_name')
+    readonly_fields = ('user_link',)
+    list_filter = ('interests',)
 
     def user_link(self, obj):
         change_url = urlresolvers.reverse('admin:auth_user_change', args=(obj.user.id,))
@@ -16,4 +16,9 @@ class UserProfileAdmin(admin.ModelAdmin):
     user_link.short_description = 'Django User Link'
     user_link.allow_tags = True
    
-admin.site.register(models.UserProfile, UserProfileAdmin)
+
+class InterestAdmin(admin.ModelAdmin):
+	list_display=('interest',)
+
+admin.site.register(models.Profile, ProfileAdmin)
+admin.site.register(models.Interest, InterestAdmin)

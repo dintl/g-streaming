@@ -8,44 +8,44 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'UserProfile.location_latitude'
-        db.add_column(u'accounts_userprofile', 'location_latitude',
+        # Adding field 'Profile.location_latitude'
+        db.add_column(u'accounts_profile', 'location_latitude',
                       self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=8, decimal_places=5, blank=True),
                       keep_default=False)
 
-        # Adding field 'UserProfile.location_longitude'
-        db.add_column(u'accounts_userprofile', 'location_longitude',
+        # Adding field 'Profile.location_longitude'
+        db.add_column(u'accounts_profile', 'location_longitude',
                       self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=8, decimal_places=5, blank=True),
                       keep_default=False)
 
-        # Adding field 'UserProfile.location_country'
-        db.add_column(u'accounts_userprofile', 'location_country',
+        # Adding field 'Profile.location_country'
+        db.add_column(u'accounts_profile', 'location_country',
                       self.gf('django.db.models.fields.related.ForeignKey')(to=orm['locations.Country'], null=True, blank=True),
                       keep_default=False)
 
-        # Adding field 'UserProfile.location_privacy'
-        db.add_column(u'accounts_userprofile', 'location_privacy',
+        # Adding field 'Profile.location_privacy'
+        db.add_column(u'accounts_profile', 'location_privacy',
                       self.gf('django.db.models.fields.CharField')(default='anonymous', max_length=20),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting field 'UserProfile.location_latitude'
-        db.delete_column(u'accounts_userprofile', 'location_latitude')
+        # Deleting field 'Profile.location_latitude'
+        db.delete_column(u'accounts_profile', 'location_latitude')
 
-        # Deleting field 'UserProfile.location_longitude'
-        db.delete_column(u'accounts_userprofile', 'location_longitude')
+        # Deleting field 'Profile.location_longitude'
+        db.delete_column(u'accounts_profile', 'location_longitude')
 
-        # Deleting field 'UserProfile.location_country'
-        db.delete_column(u'accounts_userprofile', 'location_country_id')
+        # Deleting field 'Profile.location_country'
+        db.delete_column(u'accounts_profile', 'location_country_id')
 
-        # Deleting field 'UserProfile.location_privacy'
-        db.delete_column(u'accounts_userprofile', 'location_privacy')
+        # Deleting field 'Profile.location_privacy'
+        db.delete_column(u'accounts_profile', 'location_privacy')
 
 
     models = {
-        u'accounts.userprofile': {
-            'Meta': {'object_name': 'UserProfile'},
+        u'accounts.profile': {
+            'Meta': {'object_name': 'Profile'},
             'address': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'country': ('django.db.models.fields.CharField', [], {'max_length': '80', 'blank': 'True'}),
             'data_may_provide': ('django.db.models.fields.CharField', [], {'max_length': '40', 'blank': 'True'}),

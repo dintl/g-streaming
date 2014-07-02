@@ -20,15 +20,11 @@
 
   </head>
   <body>
-      {% cms_toolbar %}
-      {% placeholder base_content %}
+      {% cms_toolbar %} 
       {% include 'inc.navbar.html' %}
 
       <div class="container site-wrapper">
-       
-
             {% block content %}{% endblock %}
-
       </div>
 
       <!-- Template Javascript Files -->

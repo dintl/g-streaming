@@ -1,38 +1,39 @@
-
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import mail_managers, send_mail
 from django.db import models
+from easy_thumbnails.fields import ThumbnailerField
 
-from gstream.apps.locations.models import Country
+from gstream.apps.locations.mixins import LocationMixin
+
 
 #Monkey patch the User class for django 1.6
 def get_profile(self):
-    if not hasattr(self, 'profile'):
-        self.profile = self.profile_set.all()[0]
-    return self.profile
+    try:
+        return self.profile
+    except:
+        return None
 User.get_profile = get_profile
-class UserProfile(models.Model):
+
+class Interest(models.Model):
+    interest = models.CharField(max_length=140)
+
+    def __unicode__(self):
+        return self.interest
+
+class Profile(LocationMixin):
 
 
     LOCATION_PRIVACY_CHOICES = (('none', "Private - Don't share my location at all"),
                                 ('anonymous', "Anonymous - Share my location anonymously"),
                                 ('public', "Public - Share my location with my profile information"),)
 
-    user        = models.ForeignKey(User)
+    user        = models.OneToOneField(User)
+    photo       = ThumbnailerField(upload_to='profile_photos',blank=True)
     city        = models.CharField(max_length=200, blank=True)
-    country     = models.CharField(max_length=80)
-     
-    location_latitude     = models.DecimalField(
-        null=True, blank=True, max_digits=8, decimal_places=5
-    )
-    location_longitude     = models.DecimalField(
-        null=True, blank=True, max_digits=8, decimal_places=5
-    )
-    location_country     = models.ForeignKey(Country, blank=True, null=True)
-
+    interests   = models.ManyToManyField(Interest, blank=True)
     location_privacy  = models.CharField(max_length=20, default='anonymous', choices=LOCATION_PRIVACY_CHOICES)
 
     def __unicode__(self):
@@ -63,7 +64,7 @@ You can view the user's information here:
 Django User
 http://g-streaming.net/admin/auth/user/%s/
 User Profile
-http://g-streaming.net/admin/accounts/userprofile/%s/
+http://g-streaming.net/admin/accounts/profile/%s/
 
 """ % (instance.id, instance.get_profile().id),
                      fail_silently=False)
