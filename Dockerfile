@@ -17,5 +17,5 @@ RUN pip install -vr /tmp/reqs/requirements.txt
 ADD . /opt/code/ 
 
 # remove local settings if there was a dev version and instead use the server version
-RUN rm -f /opt/code/globallometree/settings_local.py
-RUN cp /opt/code/globallometree/settings_local.server.py  /opt/code/globallometree/settings_local.py
+RUN rm -f /opt/code/gstream/settings_local.py
+RUN cp /opt/code/gstream/settings_local.server.py  /opt/code/gstream/settings_local.py
