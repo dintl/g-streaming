@@ -2,7 +2,7 @@ FROM tomgruner/docker-base
 
 MAINTAINER Thomas Gruner "tom.gruner@gmail.com"
 
-
+RUN apt-get install -y libjpeg62-dev zlib1g-dev libfreetype6-dev liblcms1-dev graphviz graphviz-dev pkg-config ipython-notebook 
 RUN apt-get install -y libpq-dev python-dev libxml2-dev python-lxml libxslt1-dev
 
 #Install the requirements first to keep image changes as minimal as possible
