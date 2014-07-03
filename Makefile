@@ -1,6 +1,6 @@
 
 build:
-	docker build -t tomgruner/gstream .
+	docker build -t tomgruner/g-streaming .
 
 push:
-	docker push tomgruner/gstream
+	docker push tomgruner/g-streaming

@@ -1,1 +1,16 @@
-blog post!
+{% load thumbnail %}
+
+<p class="pull-right">{{ blog_post.publish_date|date:"d M Y" }} <br>
+by {{ blog_post.author }}</p>
+<h4>
+	<a href="{% url 'blog-detail' slug=blog_post.slug %}">{{ blog_post.title }}</a>
+</h4>
+
+
+<p>
+	{% for bimage in blog_post.images.all %}
+	{% thumbnail bimage.image 160x160 crop as thumb %}    
+	 	<img src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-rounded">      
+	{% endfor %}
+</p>
+<p>{{ blog_post.content|striptags }}</p>

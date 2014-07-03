@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block content %}
+<div class="row"> 
+	<div class="col-md-12">
+		<h2>{{ blog_post.title }}</h2>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-md-8">
+		<p>{{ blog_post.publish_date|date:"d M Y" }} by {{ blog_post.author }}</p>
+		<p>
+		{% for bimage in blog_post.images.all %}
+			{% thumbnail bimage.image 250x300 crop as thumb %}    
+			 <img class="img-rounded" src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}">     
+		{% endfor %}
+		</p>
+		{{ blog_post.content }}
+	</div>
+	<div class="col-md-4">
+		<p>Useful links + author info</p>
+	</div>
+</div>
+{% endblock %}

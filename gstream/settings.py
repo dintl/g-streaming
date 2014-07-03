@@ -185,6 +185,7 @@ SOUTH_MIGRATION_MODULES = {
         'easy_thumbnails': 'easy_thumbnails.south_migrations',
     }
 
+
 if not os.path.isfile(os.path.join(PROJECT_DIR, 'settings_local.py')):
     print "settings_local.py not present - skipping"
 else:
