@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 
+{% block title %}Latest Blog Posts{% endblock %}
+
 {% block content %}
-<div class="row"> 
-	<div class="col-md-12">
-		<h2>Latest Blogs</h2>
-	</div>  
-</div>
 <div class="row"> 
 	<div class="col-md-8">
 		{% for blog_post in object_list %}
@@ -13,7 +10,7 @@
 		{% endfor %}
    	</div>
    	<div class="col-md-4">
-   	<p>Tags and call to action</p>
+	   {% include 'blogs/block.add_your_voice.html' %}
    	</div>
  </div>
 {% endblock %}

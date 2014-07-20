@@ -1,24 +1,25 @@
 {% extends "base.html" %}
-{% load thumbnail %}
+
+{% block title %}
+	{% with blog_post as item %}
+		<span class="item-title">{{ item.title }}</span>
+	{% endwith %}
+{% endblock %}
 {% block content %}
-<div class="row"> 
-	<div class="col-md-12">
-		<h2>{{ blog_post.title }}</h2>
-	</div>
-</div>
-<div class="row"> 
-	<div class="col-md-8">
-		<p>{{ blog_post.publish_date|date:"d M Y" }} by {{ blog_post.author }}</p>
-		<p>
-		{% for bimage in blog_post.images.all %}
-			{% thumbnail bimage.image 250x300 crop as thumb %}    
-			 <img class="img-rounded" src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}">     
-		{% endfor %}
-		</p>
-		{{ blog_post.content }}
-	</div>
-	<div class="col-md-4">
-		<p>Useful links + author info</p>
-	</div>
-</div>
+	{% with blog_post as item %}
+		<div class="row"> 
+			<div class="col-md-8">
+				{% include "content/inc.author_line.html" %}
+				{% if item.images %}
+					{% include 'content/content.item_images.html' %}	
+				{% endif %}
+				{{ item.content|safe }}
+			</div>
+			<div class="col-md-4">
+				{% include "accounts/site/block.author_preview.html" %}
+				{% include 'content/block.share_it.html' %}
+				{% include 'blogs/block.add_your_voice.html' %}
+			</div>
+		</div>
+	{% endwith %}
 {% endblock %}

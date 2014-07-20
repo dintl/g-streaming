@@ -1,0 +1,4 @@
+<p class="item-author-line">by 
+	<span class="item-author-name">{{ item.author.get_full_name }}</span> on 
+	<time datetime="{{ blog_post.publish_date}}">{{ item.publish_date|date:"l F jS, Y" }}</time> 
+</p>

@@ -7,3 +7,102 @@ body {
 .site-wrapper {
 	max-width:1024px;
 }
+
+.container {
+	max-width:1024px;
+}
+
+
+.page-title {
+	font-size:25px;
+	color:#49090A;
+}
+
+/************** Nav Bar ***************/
+#top-nav a.top-level-link {
+	font-family: gabriola, serif;
+	font-size:20px;
+	font-weight:normal;
+	letter-spacing: 1px;
+	padding-top: 19px;
+	padding-bottom: 11px;
+}
+
+#logo {
+	position: relative;
+	top:-6px;
+}
+
+/************** Item Styles **************/
+
+.item-title {
+	font-family: 'Domine', serif;
+	margin-bottom:0px;
+}
+
+.item-author-line {
+	color:#999;
+	font-size:10px;
+}
+
+.item-author-name {
+	color:#555;
+	font-size:14px;
+	padding-right:10px;
+}
+
+.item-author-date {
+	color:#555;
+}
+
+time {
+	color:#962E03;
+	font-size:14px;
+}
+
+#item-carousel {
+	background-color: #200607;
+}
+
+#item-carousel img{
+	margin:0px auto;
+}
+
+/************** Editing ***************/
+
+.wysiwyg-textarea {
+	width: 100%; 
+	height: 300px; 
+	font-size: 14px; 
+	line-height: 18px;
+}
+
+/************** Right Side Blocks **************/
+
+.block {
+	clear:both;
+	padding-bottom:35px;
+}
+
+.block-title {
+	padding-bottom:0px;
+	line-height:12px;
+	color:#035E96;
+	text-align:right;
+	border-bottom:1px solid #BCB9A0;
+	font-size:11px;
+	letter-spacing: 4px;
+
+}
+
+.author-preview-photo {
+	padding:0px 10px 0px 0px;
+}
+
+.block-content {
+	font-size:13px;
+	line-height:15px;
+}
+
+
+
