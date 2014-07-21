@@ -5,12 +5,12 @@
 {% block content %}
 <div class="row"> 
 	<div class="col-md-8">
-		{% for blog_post in object_list %}
-		    {% include 'blogs/preview.html' %}
+		{% for glog in object_list %}
+		    {% include 'glogs/preview.html' %}
 		{% endfor %}
    	</div>
    	<div class="col-md-4">
-	   {% include 'blogs/block.add_your_voice.html' %}
+	   {% include 'glogs/block.add_your_voice.html' %}
    	</div>
  </div>
 {% endblock %}

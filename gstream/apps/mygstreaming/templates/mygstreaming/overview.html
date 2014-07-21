@@ -2,34 +2,32 @@
 
 {% block title %}My G-Streaming{% endblock %}
 {% block content %}
-	{% with blog_post as object %}
-		<div class="row"> 
-			<div class="col-md-8">
-				<h3>G-Logs</h3>
-				{% if blogs %}
-					<table class="table table-hover table-condensed table-striped">
-						<thead>
+	<div class="row"> 
+		<div class="col-md-8">
+			<h3>G-Logs</h3>
+			{% if glogs %}
+				<table class="table table-hover table-condensed table-striped">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for glog in glogs %}
 							<tr>
-								<th>Title</th>
-								<th></th>
+								<td>{{ glog.title }}</td>
+								<td><a href="{% url 'glog-edit' id=glog.id %}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a></td>
 							</tr>
-						</thead>
-						<tbody>
-							{% for blog in blogs %}
-								<tr>
-									<td>{{ blog.title }}</td>
-									<td><a href="{% url 'blog-edit' id=blog.id %}" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a></td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				{% else %}
-					{% include 'blogs/block.add_your_voice.html' %}	
-				{% endif %}
-			</div>
-			<div class="col-md-4">
-				{% include "mygstreaming/block.about_mygstreaming.html" %}
-			</div>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				{% include 'glogs/block.add_your_voice.html' %}	
+			{% endif %}
 		</div>
-	{% endwith %}
+		<div class="col-md-4">
+			{% include "mygstreaming/block.about_mygstreaming.html" %}
+		</div>
+	</div>
 {% endblock %}

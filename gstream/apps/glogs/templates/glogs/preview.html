@@ -1,14 +1,14 @@
 {% load thumbnail %}
 
-{% with blog_post as object %}
+{% with glog as object %}
 	<h4 class="object-title">
-		<a href="{% url 'blog-detail' slug=blog_post.slug %}">{{ object.title }}</a>
+		<a href="{% url 'glog-detail' slug=glog.slug %}">{{ object.title }}</a>
 	</h4>
 	{% include 'content/inc.author_line.html' %}
 	<p>
 		{% for bimage in object.images.all %}
 		{% thumbnail bimage.image 160x160 crop as thumb %}
-		<a href="{% url 'blog-detail' slug=blog_post.slug %}">    
+		<a href="{% url 'glog-detail' slug=glog.slug %}">    
 		 	<img src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-rounded"> 
 		 </a>
 		{% endfor %}

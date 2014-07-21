@@ -1,9 +1,9 @@
 from django.contrib import admin
-from gstream.apps.blogs.models import BlogPost
+from gstream.apps.glogs.models import GLog
 from gstream.apps.content.admin_helpers import ImageInline, TagInline
 
 
-class BlogPostAdmin(admin.ModelAdmin):
+class GLogAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ('title', 'author', 'publish_date')
     raw_id_fields = ('author',)
@@ -25,4 +25,4 @@ class BlogPostAdmin(admin.ModelAdmin):
         TagInline
     ] 
 
-admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(GLog, GLogAdmin)

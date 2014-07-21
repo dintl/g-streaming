@@ -4,26 +4,26 @@ from django.views.generic import CreateView, ListView, DetailView, FormView
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
 
-from models import BlogPost
+from models import GLog
 from forms import BlogForm
 
 
 class BlogListView(ListView):
-    #This uses the template blogs/blogpost_list.html by default
-    model = BlogPost
-    queryset = BlogPost.objects.filter(publish=True)
+    #This uses the template glogs/glog_list.html by default
+    model = GLog
+    queryset = GLog.objects.filter(publish=True)
 
 
 class BlogDetailView(DetailView):
-    model = BlogPost
-    template_name = 'blogs/detail.html'
-    queryset = BlogPost.objects.filter(publish=True)
-    context_object_name = 'blog_post'
+    model = GLog
+    template_name = 'glogs/detail.html'
+    queryset = GLog.objects.filter(publish=True)
+    context_object_name = 'glog'
 
 
 class BlogFormView(FormView):
     form_class = BlogForm
-    template_name = 'blogs/edit.html'
+    template_name = 'glogs/edit.html'
 
     def dispatch(self, request, *args, **kwargs):
         
@@ -38,15 +38,15 @@ class BlogFormView(FormView):
 
     def form_valid(self, form):
     	#import pdb; pdb.set_trace()
-    	blog = BlogPost()
-    	blog.author = self.request.user
-    	blog.title = form.cleaned_data['title']
-    	blog.slug = slugify(form.cleaned_data['title'])
-    	blog.content = form.cleaned_data['content']
-    	blog.publish_date = datetime.now()
-    	blog.save()
-    	self.blog = blog
+    	glog = GLog()
+    	glog.author = self.request.user
+    	glog.title = form.cleaned_data['title']
+    	glog.slug = slugify(form.cleaned_data['title'])
+    	glog.content = form.cleaned_data['content']
+    	glog.publish_date = datetime.now()
+    	glog.save()
+    	self.glog = glog
     	return super(BlogFormView, self).form_valid(form)
 
     def get_success_url(self):
-    	return reverse('blog-detail', args=(self.blog.slug,))
+    	return reverse('glog-detail', args=(self.glog.slug,))

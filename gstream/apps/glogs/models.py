@@ -2,12 +2,12 @@ from django.db import models
 from cms.models.pluginmodel import CMSPlugin
 from gstream.apps.content.models import ContentObject
 
-class BlogPost(ContentObject):   
+class GLog(ContentObject):   
     content = models.TextField()
     def __unicode__(self):
         return self.title
 
-class BlogPostPlugin(CMSPlugin):
-    blog_post = models.ForeignKey(BlogPost)
+class GLogPlugin(CMSPlugin):
+    glog_post = models.ForeignKey(GLog)
     def __unicode__(self):
-        return self.blog_post.title
+        return self.glog_post.title

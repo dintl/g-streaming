@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from gstream.apps.blogs.models import BlogPost
+from gstream.apps.glogs.models import GLog
 
 class MyGStreamingView(TemplateView):
 
@@ -7,5 +7,5 @@ class MyGStreamingView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(MyGStreamingView, self).get_context_data(**kwargs)
-        context['blogs'] = BlogPost.objects.filter(author=self.request.user)
+        context['glogs'] = GLog.objects.filter(author=self.request.user)
         return context

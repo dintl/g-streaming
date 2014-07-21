@@ -71,7 +71,7 @@ INSTALLED_APPS = (
 
     #User content apps
     'gstream.apps.content',
-    'gstream.apps.blogs',
+    'gstream.apps.glogs',
     'gstream.apps.locations',
     'gstream.apps.mygstreaming',
 )

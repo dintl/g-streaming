@@ -15,7 +15,7 @@ class ContentObject(LocationMixin):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.content_type = 'blog'
+        self.content_type = 'glog'
     	super(ContentObject, self).save(*args, **kwargs)
     	
 
