@@ -8,6 +8,6 @@ class GLog(ContentObject):
         return self.title
 
 class GLogPlugin(CMSPlugin):
-    glog_post = models.ForeignKey(GLog)
+    glog = models.ForeignKey(GLog)
     def __unicode__(self):
-        return self.glog_post.title
+        return self.glog.title

@@ -6,8 +6,8 @@
 	</h4>
 	{% include 'content/inc.author_line.html' %}
 	<p>
-		{% for bimage in object.images.all %}
-		{% thumbnail bimage.image 160x160 crop as thumb %}
+		{% for gimage in object.images.all %}
+		{% thumbnail gimage.image 160x160 crop as thumb %}
 		<a href="{% url 'glog-detail' slug=glog.slug %}">    
 		 	<img src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}" class="img-rounded"> 
 		 </a>

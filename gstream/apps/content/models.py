@@ -27,6 +27,7 @@ class Image(models.Model):
     def __unicode__(self):
         return self.caption
 
+
 class Tag(models.Model):
     tag = models.CharField(max_length=100)
     content_object = models.ForeignKey(ContentObject)
@@ -34,6 +35,9 @@ class Tag(models.Model):
     def __unicode__(self):
         return self.tag
 
+
 class Favorite(models.Model):
 	user = models.ForeignKey(User)
 	content_object = models.ForeignKey(ContentObject)
+
+

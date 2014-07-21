@@ -1,40 +1,44 @@
 from datetime import datetime
 
-from django.views.generic import CreateView, ListView, DetailView, FormView
+from django.views.generic import (
+        CreateView, 
+        ListView, 
+        DetailView, 
+        FormView
+    )
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
 
 from models import GLog
-from forms import BlogForm
+from forms import GLogForm
 
 
-class BlogListView(ListView):
-    #This uses the template glogs/glog_list.html by default
+class GLogListView(ListView):
     model = GLog
     queryset = GLog.objects.filter(publish=True)
 
 
-class BlogDetailView(DetailView):
+class GLogCreateView(CreateView):
+    model = GLog
+    
+
+class GLogDetailView(DetailView):
     model = GLog
     template_name = 'glogs/detail.html'
     queryset = GLog.objects.filter(publish=True)
     context_object_name = 'glog'
 
 
-class BlogFormView(FormView):
-    form_class = BlogForm
+class GLogFormView(FormView):
+    form_class = GLogForm
     template_name = 'glogs/edit.html'
 
     def dispatch(self, request, *args, **kwargs):
-        
         if 'id' in kwargs.keys():
             self.id = kwargs.pop('id')
         else:
             self.id = None
-
-        return super(BlogFormView, self).dispatch(request, *args, **kwargs)
-
-   
+        return super(GLogFormView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
     	#import pdb; pdb.set_trace()
@@ -46,7 +50,7 @@ class BlogFormView(FormView):
     	glog.publish_date = datetime.now()
     	glog.save()
     	self.glog = glog
-    	return super(BlogFormView, self).form_valid(form)
+    	return super(GLogFormView, self).form_valid(form)
 
     def get_success_url(self):
     	return reverse('glog-detail', args=(self.glog.slug,))

@@ -9,7 +9,7 @@ class GLogPlugin(CMSPluginBase):
     render_template = "glogs/preview.html"
 
     def render(self, context, instance, placeholder):
-        context['glog_post'] = instance.glog_post
+        context['glog'] = instance.glog
         return context
 
 plugin_pool.register_plugin(GLogPlugin)
