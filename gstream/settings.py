@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'gstream.apps.content',
     'gstream.apps.blogs',
     'gstream.apps.locations',
+    'gstream.apps.mygstreaming',
 )
 
 MIDDLEWARE_CLASSES = (

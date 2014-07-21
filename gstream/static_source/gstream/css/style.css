@@ -16,6 +16,8 @@ body {
 .page-title {
 	font-size:25px;
 	color:#49090A;
+	letter-spacing: 3px;
+	font-style: italic;
 }
 
 /************** Nav Bar ***************/
@@ -33,10 +35,11 @@ body {
 	top:-6px;
 }
 
-/************** Item Styles **************/
+/************** Object Styles **************/
 
 .item-title {
 	font-family: 'Domine', serif;
+	font-style:normal;
 	margin-bottom:0px;
 }
 
@@ -77,6 +80,16 @@ time {
 	line-height: 18px;
 }
 
+.wysihtml5-toolbar .btn {
+	padding:4px;
+	height: 26px;
+	font-size:13px; 
+}
+
+.bootstrap-tagsinput {
+	width:100%;
+}
+
 /************** Right Side Blocks **************/
 
 .block {
@@ -99,7 +112,7 @@ time {
 	padding:0px 10px 0px 0px;
 }
 
-.block-content {
+.block-content p {
 	font-size:13px;
 	line-height:15px;
 }

@@ -1,16 +1,16 @@
 {% load thumbnail %}
-<div id="item-carousel" class="carousel slide" data-ride="carousel">
+<div id="object-carousel" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
-	  	{% for content_image in item.images.all %}
-	    <li data-target="#item-carousel" data-slide-to="{{forloop.counter0}}"
+	  	{% for content_image in object.images.all %}
+	    <li data-target="#object-carousel" data-slide-to="{{forloop.counter0}}"
 	    {% if forloop.counter0 == 0 %} class="active" {% endif %}
 	    ></li>
 	    {% endfor %}
 	  </ol>
 	  <div class="carousel-inner">
-	  	{% for content_image in item.images.all  %}
-		    <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
+	  	{% for content_image in object.images.all  %}
+		    <div class="object {% if forloop.counter0 == 0 %} active {% endif %}">
 		       {% thumbnail content_image.image 600x450 crop=scale as thumb %}
 		       {% if content_image.link %}
 		       		<a href="{{content_image.link}}" target="{{content_image.target}}">
@@ -27,6 +27,6 @@
 		    </div>
 		{% endfor %}
 	  </div>
-	  <a class="left carousel-control" href="#item-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-	  <a class="right carousel-control" href="#item-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	  <a class="left carousel-control" href="#object-carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	  <a class="right carousel-control" href="#object-carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div><!-- /.carousel -->

@@ -7,6 +7,7 @@
 
 	<!-- Bootstrap -->
 	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'wysiwyg/wysiwyg-color.css' %}" rel="stylesheet" />
   <link href='http://fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>
 
   <link href="{% static 'gstream/css/style.css' %}" rel="stylesheet">
@@ -17,8 +18,22 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	<!-- CMS and dynamic css -->
-      {% render_block "css" %}
+	<!-- CMS and dynamic css from sekizai -->
+  {% render_block "css" %}
+
+
+  <!-- Template Javascript Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <!-- CMS Javascript Files from sekizai-->
+  {% render_block "js" %}
+
+
+  <!-- Form media, etc... -->
+  {% block header_extra %}
+  {% endblock %}
 
   </head>
   <body>
@@ -33,12 +48,7 @@
             {% block content %}{% endblock %}
       </div>
 
-      <!-- Template Javascript Files -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-      <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+         
       
-      <!-- CMS Javascript Files -->
-      {% render_block "js" %}
   </body>
 </html>

@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     #url(r'^$', 'gstream.apps.home.views.homepage', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('gstream.apps.accounts.urls')),
-    url(r'^blogs/', include('gstream.apps.blogs.urls')),
+    url(r'^g-logs/', include('gstream.apps.blogs.urls')),
+    url(r'^mygstreaming/', include('gstream.apps.mygstreaming.urls')),
 
     url(r'^', include('cms.urls')),
 )

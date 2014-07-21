@@ -1,8 +1,8 @@
 from django.db import models
 from cms.models.pluginmodel import CMSPlugin
-from gstream.apps.content.models import ContentItem
+from gstream.apps.content.models import ContentObject
 
-class BlogPost(ContentItem):   
+class BlogPost(ContentObject):   
     content = models.TextField()
     def __unicode__(self):
         return self.title

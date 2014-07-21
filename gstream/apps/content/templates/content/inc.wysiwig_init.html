@@ -1,0 +1,29 @@
+{% load sekizai_tags %}
+{% load staticfiles %}
+
+{% addtoblock "css" %}
+	<link href="{% static 'wysiwyg/bootstrap3-wysihtml5.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+	{% endaddtoblock %}
+
+	{% addtoblock "js" %}
+	<script src="{% static 'wysiwyg/bootstrap3-wysihtml5.all.min.js' %}"></script>
+	{% endaddtoblock %}
+
+	{% addtoblock "js" %}
+	<script> $(function() { $('.wysiwyg-textarea').wysihtml5({
+		     "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+		     "emphasis": true, //Italics, bold, etc. Default true
+		     "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+		     "html": false, //Button which allows you to edit the generated HTML. Default false
+		     "link": true, //Button to insert a link. Default true
+		     "image": false, //Button to insert an image. Default true,
+		     "color": true, //Button to change color of font  
+		     "blockquote": true, //Blockquote  
+		     "size" : "small",
+		     "stylesheets": ["{% static 'bootstrap/css/bootstrap.min.css' %}",
+		     				 "{% static 'wysiwyg/bootstrap3-wysihtml5.min.css' %}",
+		     				 "{% static 'gstream/css/style.css' %}",
+		     				 "{% static 'wysiwyg/wysiwyg-color.css' %}"]
+		});
+	 }); </script>
+	{% endaddtoblock %}

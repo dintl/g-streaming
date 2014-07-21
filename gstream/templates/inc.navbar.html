@@ -15,13 +15,13 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/blogs" class="top-level-link">blogs</a></li>
+        <li><a href="/g-logs" class="top-level-link">g-logs</a></li>
         <li><a href="/blogs" class="top-level-link">g-heros</a></li>
         <li><a href="/blogs" class="top-level-link">jobs</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
          {% if user.is_authenticated %}
-           <li><a href="/profile" class="top-level-link">my g-streaming</a></li>
+           <li><a href="{% url 'mygstreaming' %}" class="top-level-link">my g-streaming</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle top-level-link" data-toggle="dropdown">{{user.username}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">

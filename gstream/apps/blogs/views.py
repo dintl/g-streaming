@@ -1,7 +1,6 @@
 from datetime import datetime
 
-from django.views.generic import ListView, DetailView, FormView
-from django.views.generic.detail import SingleObjectMixin
+from django.views.generic import CreateView, ListView, DetailView, FormView
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
 
@@ -10,8 +9,8 @@ from forms import BlogForm
 
 
 class BlogListView(ListView):
+    #This uses the template blogs/blogpost_list.html by default
     model = BlogPost
-    template_name = 'blogs/list.html'
     queryset = BlogPost.objects.filter(publish=True)
 
 
@@ -25,6 +24,17 @@ class BlogDetailView(DetailView):
 class BlogFormView(FormView):
     form_class = BlogForm
     template_name = 'blogs/edit.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        
+        if 'id' in kwargs.keys():
+            self.id = kwargs.pop('id')
+        else:
+            self.id = None
+
+        return super(BlogFormView, self).dispatch(request, *args, **kwargs)
+
+   
 
     def form_valid(self, form):
     	#import pdb; pdb.set_trace()

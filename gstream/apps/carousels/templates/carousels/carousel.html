@@ -13,7 +13,7 @@
   </ol>
   <div class="carousel-inner">
   	{% for cimage in carousel.images.all %}
-	    <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
+	    <div class="object {% if forloop.counter0 == 0 %} active {% endif %}">
 	       {% thumbnail cimage.image 1200x500 crop as thumb %}
 	       {% if cimage.link %}
 	       		<a href="{{cimage.link}}" target="{{cimage.target}}">

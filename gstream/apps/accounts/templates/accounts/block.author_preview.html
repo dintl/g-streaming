@@ -1,0 +1,17 @@
+{% extends 'block.html' %}
+{% load thumbnail %}
+
+{% block block_title %} 
+	author spotlight
+{% endblock %}
+
+{% block block_content %} 
+	{% if object.author.profile.photo %}
+		{% thumbnail object.author.profile.photo 120x120 crop as thumb %}   
+		<div class="pull-left author-preview-photo"> 
+			 <img  class="img-circle" src="{{thumb.url}}"  width="{{ thumb.width }}" height="{{ thumb.height }}">   
+		</div>  
+	{% endif %}
+	<h4>{{object.author.get_full_name}}</h4>
+	<p class="block-content">{{object.author.profile.bio|truncatewords:60}}</p>
+{% endblock %}
