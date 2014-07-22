@@ -12,7 +12,6 @@ body {
 	max-width:1024px;
 }
 
-
 .page-title {
 	font-size:25px;
 	color:#49090A;
@@ -99,10 +98,10 @@ time {
 
 .block-title {
 	padding-bottom:0px;
-	line-height:12px;
+	line-height:13px;
 	color:#035E96;
 	text-align:right;
-	border-bottom:1px solid #BCB9A0;
+	border-bottom:1px solid #035E96;
 	font-size:11px;
 	letter-spacing: 4px;
 

@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     ################################ OTHER HELPERS ###################
     'crispy_forms',
     'easy_thumbnails',
+    'taggit',
   
     ################################ GSTREAM #########################
     
@@ -129,6 +130,11 @@ DATABASES = {
     }
 }
 
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -180,10 +186,6 @@ CMS_TEMPLATES = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-
-SOUTH_MIGRATION_MODULES = {
-        'easy_thumbnails': 'easy_thumbnails.south_migrations',
-    }
 
 THUMBNAIL_DEBUG = True
 THUMBNAIL_SUBDIR = 'thumbs'

@@ -26,7 +26,7 @@ class Profile(LocationMixin):
     photo       = ThumbnailerField(upload_to='profile_photos',blank=True)
     bio         = models.TextField(blank=True, null=True)
     city        = models.CharField(max_length=200, blank=True)
-    interests   = models.ManyToManyField(Interest, blank=True)
+    interests   = models.ManyToManyField(Interest, blank=True, null=True)
     location_privacy  = models.CharField(max_length=20, default='anonymous', choices=LOCATION_PRIVACY_CHOICES)
 
     def __unicode__(self):

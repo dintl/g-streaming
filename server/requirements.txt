@@ -1,5 +1,6 @@
 
 ############# Django Extra Reqs #######################
 
-
 django-crispy-forms==1.4.0
+django-taggit==0.12
+django_wysiwyg==0.7.0

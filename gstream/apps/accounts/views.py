@@ -23,8 +23,8 @@ def register(request):
 
             
             #To log in the user automatically uncomment the following two lines
-            #login_user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
-            #login(request, login_user)
+            login_user = authenticate(username=request.POST.get('username'), password=request.POST.get('password1'))
+            login(request, login_user)
             
             #The next lines require an admin to approve the user and add the first + last name
             user.first_name = form.cleaned_data['first_name'] 
@@ -33,32 +33,12 @@ def register(request):
             user.save()
             
             profile = models.Profile(user=user,
-                                              country=form.cleaned_data['country'],
-                                              )
+                                     country=form.cleaned_data['country'],
+                                     bio=form.cleaned_data['bio']
+                                    )
             profile.save()
              
-            mail_managers('G-Streaming New User "%s" requires approval' % user.username,
-                      """
-Dear G-Streaming Admin,
-
-A new user has registered for your website. This user needs your approval to log in.
-
-To allow the user to log in you can follow these steps:
-
-1) Go to the new Django User: http://www.g-streaming.net/admin/auth/user/%s/
-2) Click the active checkbox on the user settings
-3) Click save
-4) The user will be automatically notified their account has been activated
-
-
-You may also view the new user's profile at:
-http://www.g-streaming.net/admin/accounts/profile/%s/
-                                              
-
-""" % (user.id, profile.id), 
-                     fail_silently=False)
-            
-            return HttpResponseRedirect('/accounts/approval-pending/')
+            return HttpResponseRedirect('/')
     else:
         
         # neither POST nor GET with key
@@ -69,7 +49,3 @@ http://www.g-streaming.net/admin/accounts/profile/%s/
                                context_instance=RequestContext(request))
     
 
-def approval_pending(request):
-    
-    return render_to_response('accounts/account_approval_pending.html',
-                               context_instance=RequestContext(request))

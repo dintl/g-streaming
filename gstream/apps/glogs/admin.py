@@ -1,6 +1,6 @@
 from django.contrib import admin
 from gstream.apps.glogs.models import GLog
-from gstream.apps.content.admin_helpers import ImageInline, TagInline
+from gstream.apps.content.admin_helpers import ImageInline
 
 
 class GLogAdmin(admin.ModelAdmin):
@@ -22,7 +22,6 @@ class GLogAdmin(admin.ModelAdmin):
 
     inlines = [
         ImageInline,
-        TagInline
     ] 
 
 admin.site.register(GLog, GLogAdmin)

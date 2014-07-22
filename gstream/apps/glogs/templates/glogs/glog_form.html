@@ -12,6 +12,7 @@
         	<form method="POST" action=".">
         		{% csrf_token %}
         		{{ form.non_field_errors }}
+
 	        	<div class="well">
 	            	{{ form.title|as_crispy_field }}
 	            </div>
@@ -19,19 +20,14 @@
 		            <label for="id_content" class="control-label requiredField">
 						G-Log Content
 					</label>
-					<textarea name="content" id="id_content" class="wysiwyg-textarea" placeholder="Click here to begin writing..." ></textarea>
+					<textarea name="content" id="id_content" class="wysiwyg-textarea" placeholder="Click here to begin writing...">{% if form.content.value %}{{ form.content.value|safe }}{% endif %}</textarea>
 				</div>
 				<div class="well">
-	            	{{ form.tags.errors }}
-	            	<label for="id_tags" class="control-label">
-						Tags
-					</label>
-					<div class="controls">
-						{{ form.tags }}
-					</div>
+	            	{{ form.tags|as_crispy_field }}
 	            </div>
 				<button type="submit" class="btn btn-success pull-right">Post It!</button>
 			</form>
+
 		</div>
 		<div class="col-md-3">
 			{% include 'glogs/block.about_glog.html' %}

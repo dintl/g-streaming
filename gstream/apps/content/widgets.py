@@ -1,7 +1,9 @@
-from django.forms.widgets import TextInput
+from taggit.forms import TagWidget as TaggitTagWidget
 
-class TagWidget(TextInput):
-
+class TagWidget(TaggitTagWidget):
+    """
+        Adds in bootstap tag input to tag widget
+    """
     def render(self, name, value, attrs=None):
         if not attrs:
             attrs = {}
@@ -12,5 +14,3 @@ class TagWidget(TextInput):
     class Media:
         js = ('content/bootstrap-tagsinput/bootstrap-tagsinput.min.js',)
         css = {'screen': ('content/bootstrap-tagsinput/bootstrap-tagsinput.css',),}
-
-   

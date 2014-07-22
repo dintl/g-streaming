@@ -1,5 +1,6 @@
-from django import forms
+from taggit.forms import TagField as TaggitTagField
+
 from .widgets import TagWidget
 
-class TagField(forms.CharField):
+class TagField(TaggitTagField):
     widget = TagWidget

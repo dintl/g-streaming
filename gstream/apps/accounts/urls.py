@@ -1,6 +1,5 @@
 from django.conf.urls import patterns
 
-
 urlpatterns = patterns('django.contrib.auth.views',
      (r'^logout[/]*', 'logout', {'template_name': 'accounts/account_logout.html'}),
      (r'^login/$', 'login', {'template_name': 'accounts/account_login.html'}),
@@ -27,10 +26,7 @@ urlpatterns = patterns('django.contrib.auth.views',
                                           {'template_name': 'accounts/account_password_change_done.html'}),
     ) 
 
-
-
 #Site views
 urlpatterns += patterns('gstream.apps.accounts.views',
      (r'^register/$', 'register'),
-     (r'^approval-pending/$', 'approval_pending')
 )

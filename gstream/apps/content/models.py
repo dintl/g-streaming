@@ -28,14 +28,6 @@ class Image(models.Model):
         return self.caption
 
 
-class Tag(models.Model):
-    tag = models.CharField(max_length=100)
-    content_object = models.ForeignKey(ContentObject)
-
-    def __unicode__(self):
-        return self.tag
-
-
 class Favorite(models.Model):
 	user = models.ForeignKey(User)
 	content_object = models.ForeignKey(ContentObject)

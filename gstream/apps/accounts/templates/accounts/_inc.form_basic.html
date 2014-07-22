@@ -1,8 +1,0 @@
-{% for error in form.non_field_errors  %} 
-   <span class="error"> {{ error|escape }} </span> <br>
-{% endfor %}
-{% csrf_token %}
-
-{% for field in form %}
-    {% include "accounts/_inc.form_field.html" %}
-{% endfor %}

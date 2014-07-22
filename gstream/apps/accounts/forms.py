@@ -1,7 +1,7 @@
 
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Interest
 from gstream.apps.locations.models import Country
 
 class RegistrationForm(forms.ModelForm):
@@ -22,7 +22,10 @@ class RegistrationForm(forms.ModelForm):
     email  = forms.EmailField(label="Email")
     country = forms.ModelChoiceField(queryset=Country.objects.all())
 
-    accept_terms_website   = forms.BooleanField(label='I accept the G-Streaming Website Terms and Conditions.')
+    interests = forms.ModelMultipleChoiceField(queryset=Interest.objects.all(), widget=forms.CheckboxSelectMultiple(), required=False)
+    bio = forms.CharField(widget=forms.Textarea, required=False)
+    
+    accept_terms_website = forms.BooleanField(label='I accept the G-Streaming Website Terms and Conditions.')
    
     class Meta:
         model = User

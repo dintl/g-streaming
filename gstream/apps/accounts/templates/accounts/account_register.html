@@ -2,8 +2,13 @@
 
 {% load crispy_forms_tags %}
 
+
+{% block title%}
+	Sign Up!
+{% endblock%}
+
 {% block meta_title%}
-	Register
+	Sign Up!
 {% endblock%}
 
 
@@ -21,13 +26,11 @@
 <div class="row">
 	<div class="col-lg-8">
 
-
-		<h2>Sign Up!</h2>
 		{% if form.has_errors %}
 		    form.non_field_errors
 		{% endif %}
 
-	    <p>Registration and use of the G-Streaming platform is free. Please fill out the form below. We will review your application and notify you when it is accepted.</p>
+	    <p>Registration and use of the G-Streaming platform is free! Please complete the form below.</p>
 	    
 	    </p>
 		<form method="post" style="padding:0px 15px 0px 0px;">
@@ -48,8 +51,10 @@
 				<legend>About You</legend>
 				{{ form.first_name|as_crispy_field }}
 				{{ form.last_name|as_crispy_field }}
-				{{ form.country|as_crispy_field }}
 				{{ form.email|as_crispy_field }}
+				{{ form.country|as_crispy_field }}
+				{{ form.interests|as_crispy_field }}
+				{{ form.bio|as_crispy_field }}
 			</fieldset>
 			<br>
 
@@ -60,7 +65,6 @@
 				</div>
 				{% with form.accept_terms_website as field %}
 				 <label  class="required" for="id_{{ field.html_name }}">
-	                  
 
 		              {% if field.errors %} 
 			             	<span class="error"> {{ field.errors|first|striptags }}</span> <br>
@@ -71,21 +75,20 @@
 		                 <span class="required">*</span> 
 		              {{ field.label }}
 		          </label>
-			          
-
 
 				{% endwith %}
 			</fieldset>
 
-
-
-		<div class="submit_block">
-			<input type="submit" value="Register" class="btn btn-success"/>
-		</div>
+			<p class="text-right">
+				<input type="submit" value="Register" class="btn btn-success"/>
+			</p>
 		
 		</form>
 	</div>
-	{% include "accounts/_inc.register_options.html" %}
+	<div class="col-lg-4">
+		{% include "accounts/block.account_benefits.html" %}
+		{% include "accounts/block.register_options.html" %}
+	</div>
 </div>
 	
 {% endblock %}
